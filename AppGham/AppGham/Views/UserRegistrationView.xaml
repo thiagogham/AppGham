@@ -7,11 +7,12 @@
         <viewmodels:UserRegistrationViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Margin="20,20,20,0">
             <Entry Text="{Binding Name}" Placeholder="Name"/>
             <Entry Text="{Binding Email}" Placeholder="Email"/>
-            <ImageButton Source="{Binding PhotoPath}" Command="{Binding TakePhotoCommand}"/>
-            <Button Text="Register" Command="{Binding RegisterCommand}" />
+            <Image Source="{Binding PhotoPath}" WidthRequest="200"/>
+            <Button Command="{Binding TakePhotoCommand}" Text="TakePhoto"/>
+            <Button Command="{Binding RegisterCommand}" Text="Register" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

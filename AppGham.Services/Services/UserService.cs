@@ -1,6 +1,6 @@
 ﻿using AppGham.Services.Interfaces;
-using AppGham.Services.Tables;
 using AppGham.Shared;
+using AppGham.Shared.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

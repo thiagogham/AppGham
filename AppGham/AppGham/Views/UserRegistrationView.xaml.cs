@@ -1,6 +1,4 @@
-﻿using AppGham.Services;
-using AppGham.ViewModels;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace AppGham.Views
 {
@@ -8,7 +6,6 @@ namespace AppGham.Views
     {
         public UserRegistrationView()
         {
-            BindingContext = new UserRegistrationViewModel();
             InitializeComponent();
         }
     }

@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppGham.iOS", "AppGham\AppG
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppGham", "AppGham\AppGham\AppGham.csproj", "{8B38C3C4-4FE7-4750-9FF4-5B89846DAB04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppGham.Services", "AppGham.Service.DataAccess\AppGham.Services.csproj", "{13ECF679-320C-44E4-9FE8-62F4455B7BAB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppGham.Services", "AppGham.Services\AppGham.Services.csproj", "{13ECF679-320C-44E4-9FE8-62F4455B7BAB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppGham.Shared", "AppGham.Shared\AppGham.Shared.csproj", "{297827C6-8615-47E4-A19B-CE48199FA7A8}"
 EndProject

@@ -16,4 +16,8 @@
     <ProjectReference Include="..\AppGham.Shared\AppGham.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Tables\" />
+  </ItemGroup>
+
 </Project>

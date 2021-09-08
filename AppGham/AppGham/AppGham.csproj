@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\AppGham.Service.DataAccess\AppGham.Services.csproj" />
+    <ProjectReference Include="..\..\AppGham.Services\AppGham.Services.csproj" />
     <ProjectReference Include="..\..\AppGham.Shared\AppGham.Shared.csproj" />
   </ItemGroup>
 

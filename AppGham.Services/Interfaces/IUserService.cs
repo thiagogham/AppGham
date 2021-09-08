@@ -1,5 +1,4 @@
-﻿using AppGham.Services.Tables;
-using AppGham.Shared;
+﻿using AppGham.Shared;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
