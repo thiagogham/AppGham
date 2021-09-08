@@ -8,7 +8,7 @@ namespace AppGham
         public App()
         {
             InitializeComponent();
-            MainPage = new UserRegistrationView();
+            MainPage = new UserRegistration();
         }
 
         protected override void OnStart()

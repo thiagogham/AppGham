@@ -27,13 +27,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\UserRegistrationView.xaml.cs">
-      <DependentUpon>UserRegistrationView.xaml</DependentUpon>
+    <Compile Update="Views\UserRegistration.xaml.cs">
+      <DependentUpon>UserRegistration.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\UserRegistrationView.xaml">
+    <EmbeddedResource Update="Views\UserRegistration.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

@@ -10,12 +10,12 @@ using Xamarin.Essentials;
 
 namespace AppGham.ViewModels
 {
-    public class UserRegistrationViewModel : BaseViewModel
+    public class UserRegistration : BaseViewModel
     {
         private readonly IUserService _userService;
 
         //public UserRegistrationViewModel(IUserService userService = null)
-        public UserRegistrationViewModel()
+        public UserRegistration()
         {
             _userService = new UserService();
             PhotoPath = "icon.png";

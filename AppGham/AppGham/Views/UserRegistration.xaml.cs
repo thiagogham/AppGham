@@ -2,9 +2,9 @@
 
 namespace AppGham.Views
 {
-    public partial class UserRegistrationView : ContentPage
+    public partial class UserRegistration : ContentPage
     {
-        public UserRegistrationView()
+        public UserRegistration()
         {
             InitializeComponent();
         }
