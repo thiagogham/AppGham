@@ -1,4 +1,6 @@
 ﻿using AppGham.Extensions;
+using AppGham.Helpers;
+using AppGham.Interfaces;
 using AppGham.Services;
 using AppGham.Services.Interfaces;
 using AppGham.Shared.Models;
@@ -13,11 +15,13 @@ namespace AppGham.ViewModels
     public class UserRegistration : BaseViewModel
     {
         private readonly IUserService _userService;
+        private readonly IDialogService _dialogService;
 
-        //public UserRegistrationViewModel(IUserService userService = null)
+        //public UserRegistrationViewModel(IUserService userService, IDialogService dialogService)
         public UserRegistration()
         {
             _userService = new UserService();
+            _dialogService = new DialogService();
             PhotoPath = "icon.png";
             RegisterCommand = new AsyncCommand(RegisterAsync);
             TakePhotoCommand = new AsyncCommand(TakePhotoAsync);
@@ -87,6 +91,7 @@ namespace AppGham.ViewModels
                 };
 
                 await _userService.AddUserAsync(user);
+                await _dialogService.DisplayAlert("User Registration", "User saved successfully!", "Ok");
             }
             catch (Exception ex)
             {
