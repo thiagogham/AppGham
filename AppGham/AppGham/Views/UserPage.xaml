@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="AppGham.Views.UserPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Padding="40">
+                <Frame CornerRadius="100" 
+                       HeightRequest="200"
+                       WidthRequest="200"
+                       Padding="0"
+                       HorizontalOptions="Center"
+                       IsClippedToBounds="True">
+                    <Image Source="{Binding User.Photo}"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+                </Frame>
+            </StackLayout>
+            <StackLayout Margin="20" Orientation="Horizontal">
+                <StackLayout>
+                    <Label Text="Name: "/>
+                    <Label Text="Email: "/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="{Binding User.Name}"/>
+                    <Label Text="{Binding User.Email}"/>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

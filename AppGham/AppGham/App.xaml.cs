@@ -1,4 +1,5 @@
-﻿using AppGham.Views;
+﻿using AppGham.Helpers;
+using AppGham.Views;
 using Xamarin.Forms;
 
 namespace AppGham
@@ -8,7 +9,8 @@ namespace AppGham
         public App()
         {
             InitializeComponent();
-            MainPage = new UserRegistration();
+            MainPage = new NavigationPage(new UserRegistration());
+            NavigationService.Navigation = MainPage.Navigation;
         }
 
         protected override void OnStart()

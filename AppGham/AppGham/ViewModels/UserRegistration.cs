@@ -17,7 +17,7 @@ namespace AppGham.ViewModels
         private readonly IUserService _userService;
         private readonly IDialogService _dialogService;
 
-        //public UserRegistrationViewModel(IUserService userService, IDialogService dialogService)
+        //public UserRegistrationViewModel(IUserService userService, IDialogService dialogService, INavigation navigationService)
         public UserRegistration()
         {
             _userService = new UserService();
@@ -92,6 +92,7 @@ namespace AppGham.ViewModels
 
                 await _userService.AddUserAsync(user);
                 await _dialogService.DisplayAlert("User Registration", "User saved successfully!", "Ok");
+                await NavigationService.Navigation.PushAsync(new Views.UserPage(user.ID));
             }
             catch (Exception ex)
             {
