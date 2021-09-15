@@ -10,5 +10,6 @@ namespace AppGham.Services.Interfaces
         Task<IUser> GetUserAsync(int id);
         Task<int> DeleteUserAsync(int id);
         Task<int> AddUserAsync(IUser user);
+        Task<int> UpdateUserAsync(IUser user);
     }
 }

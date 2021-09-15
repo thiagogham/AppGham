@@ -26,6 +26,9 @@
                     <Label Text="{Binding User.Email}"/>
                 </StackLayout>
             </StackLayout>
+            <StackLayout HorizontalOptions="CenterAndExpand">
+                <Button Command="{Binding EditCommand}" Text="Edit" />
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

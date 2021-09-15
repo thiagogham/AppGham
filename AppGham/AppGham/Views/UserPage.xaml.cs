@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using AppGham.Shared;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace AppGham.Views
@@ -12,6 +13,13 @@ namespace AppGham.Views
         {
             InitializeComponent();
             _userPage = new ViewModels.UserPage(userId);
+            BindingContext = _userPage;
+        }
+
+        public UserPage(IUser user)
+        {
+            InitializeComponent();
+            _userPage = new ViewModels.UserPage(user);
             BindingContext = _userPage;
         }
 
