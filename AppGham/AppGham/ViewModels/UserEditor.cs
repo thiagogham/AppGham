@@ -9,7 +9,7 @@ namespace AppGham.ViewModels
 {
     public class UserEditor : UserEditorBase
     {
-        public UserEditor(IUser user) : base(new UserService())
+        public UserEditor(IUser user) : base(new UserService(), new DialogService())
         {
             User = user;
         }
@@ -17,8 +17,7 @@ namespace AppGham.ViewModels
         public override IUser User { get; set; }
 
         bool UpdateIsEnabled => !string.IsNullOrWhiteSpace(User.Name) ||
-                                !string.IsNullOrWhiteSpace(User.Email) ||
-                                !string.IsNullOrWhiteSpace(PhotoPath);
+                                !string.IsNullOrWhiteSpace(User.Email);
 
         public override async Task SaveAsync()
         {

@@ -4,9 +4,9 @@ using Xamarin.Forms.Xaml;
 namespace AppGham.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class UserRegistration : ContentPage
+    public partial class LoginPage : ContentPage
     {
-        public UserRegistration()
+        public LoginPage()
         {
             InitializeComponent();
         }

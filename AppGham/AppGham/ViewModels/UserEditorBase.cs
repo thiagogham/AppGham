@@ -1,6 +1,8 @@
 ﻿using AppGham.Extensions;
+using AppGham.Interfaces;
 using AppGham.Services.Interfaces;
 using AppGham.Shared;
+using AppGham.Shared.Models;
 using MvvmHelpers.Commands;
 using System;
 using System.IO;
@@ -12,13 +14,16 @@ namespace AppGham.ViewModels
     public abstract class UserEditorBase : BaseViewModel
     {
         protected readonly IUserService _userService;
+        protected readonly IDialogService _dialogService;
 
-        protected UserEditorBase(IUserService userService)
+        protected UserEditorBase(IUserService userService, IDialogService dialogService)
         {
             _userService = userService;
+            _dialogService = dialogService;
             TakePhotoCommand = new AsyncCommand(TakePhotoAsync);
             SaveCommand = new AsyncCommand(SaveAsync);
             PhotoPath = "icon.png";
+            User = new User();
         }
 
         public abstract IUser User { get; set; }
@@ -50,8 +55,7 @@ namespace AppGham.ViewModels
         {
             try
             {
-                var photo = await MediaPicker.CapturePhotoAsync();
-                await LoadPhotoAsync(photo);
+                await LoadPhotoAsync(await MediaPicker.CapturePhotoAsync());
             }
             catch (FeatureNotSupportedException fnsEx)
             {

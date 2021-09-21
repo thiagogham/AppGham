@@ -9,7 +9,7 @@ namespace AppGham
         public App()
         {
             InitializeComponent();
-            MainPage = new NavigationPage(new UserRegistration());
+            MainPage = new NavigationPage(new LoginPage());
             NavigationService.Navigation = MainPage.Navigation;
         }
 
