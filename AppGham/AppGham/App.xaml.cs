@@ -1,5 +1,5 @@
-﻿using AppGham.Helpers;
-using AppGham.Views;
+﻿using AppGham.PageModels;
+using FreshMvvm;
 using Xamarin.Forms;
 
 namespace AppGham
@@ -9,8 +9,8 @@ namespace AppGham
         public App()
         {
             InitializeComponent();
-            MainPage = new NavigationPage(new LoginPage());
-            NavigationService.Navigation = MainPage.Navigation;
+            Bootstrapper.RegisterServices();
+            MainPage = new FreshNavigationContainer(FreshPageModelResolver.ResolvePageModel<LoginPageModel>());
         }
 
         protected override void OnStart()

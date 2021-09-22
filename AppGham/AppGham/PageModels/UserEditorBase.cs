@@ -1,32 +1,35 @@
 ﻿using AppGham.Extensions;
-using AppGham.Interfaces;
 using AppGham.Services.Interfaces;
 using AppGham.Shared;
 using AppGham.Shared.Models;
+using FreshMvvm;
 using MvvmHelpers.Commands;
 using System;
 using System.IO;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 
-namespace AppGham.ViewModels
+namespace AppGham.PageModels
 {
-    public abstract class UserEditorBase : BaseViewModel
+    public abstract class UserEditorBase : FreshBasePageModel
     {
         protected readonly IUserService _userService;
-        protected readonly IDialogService _dialogService;
 
-        protected UserEditorBase(IUserService userService, IDialogService dialogService)
+        protected UserEditorBase(IUserService userService)
         {
             _userService = userService;
-            _dialogService = dialogService;
             TakePhotoCommand = new AsyncCommand(TakePhotoAsync);
             SaveCommand = new AsyncCommand(SaveAsync);
             PhotoPath = "icon.png";
             User = new User();
         }
 
-        public abstract IUser User { get; set; }
+        public override void Init(object initData)
+        {
+            User = initData as IUser ?? new User();
+        }
+
+        public IUser User { get; set; }
 
         public string PhotoPath { get; private set; }
 

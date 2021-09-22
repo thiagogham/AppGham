@@ -1,12 +1,12 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace AppGham.Views
+namespace AppGham.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class UserSignUp : ContentPage
+    public partial class LoginPage : ContentPage
     {
-        public UserSignUp()
+        public LoginPage()
         {
             InitializeComponent();
         }

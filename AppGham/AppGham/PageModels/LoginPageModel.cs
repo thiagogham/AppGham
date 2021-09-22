@@ -1,26 +1,28 @@
 ﻿using AppGham.Extensions;
-using AppGham.Helpers;
-using AppGham.Services;
-using AppGham.Shared;
+using AppGham.Services.Interfaces;
+using AppGham.Shared.Models;
 using MvvmHelpers.Commands;
 using System;
 using System.Threading.Tasks;
 
-namespace AppGham.ViewModels
+namespace AppGham.PageModels
 {
-    public class LoginPage : UserEditorBase
+    public class LoginPageModel : UserEditorBase
     {
-        public LoginPage() : base(new UserService(), new DialogService())
+        public LoginPageModel(IUserService userService) : base(userService)
         {
-            SignUpCommand = new AsyncCommand(async () => await NavigationService.Navigation.PushAsync(new Views.UserSignUp()));
+            SignUpCommand = new AsyncCommand(async () => await CoreMethods.PushPageModel<UserSignUpPageModel>());
         }
-
-        public override IUser User { get; set; }
 
         public AsyncCommand SignUpCommand { get; }
 
         bool LoginIsEnabled => !string.IsNullOrWhiteSpace(User.Email) ||
                                !string.IsNullOrWhiteSpace(User.Password);
+
+        public override void Init(object initData)
+        {
+            User = new User();
+        }
 
         public override async Task SaveAsync()
         {
@@ -33,10 +35,11 @@ namespace AppGham.ViewModels
                 if(logged)
                 {
                     User = await _userService.GetUserAsync(User.Email);
-                    await NavigationService.Navigation.PushAsync(new Views.UserPage(User));
+                    await CoreMethods.PushPageModelWithNewNavigation<UserPageModel>(User);
+                    return;
                 }
-                else
-                    await _dialogService.DisplayAlert("User Login", "Wrong email or password!", "Ok");
+                
+                await CoreMethods.DisplayAlert("User Login", "Wrong email or password!", "Ok");
             }
             catch (Exception ex)
             {

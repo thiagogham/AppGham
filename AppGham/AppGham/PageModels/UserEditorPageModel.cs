@@ -1,20 +1,16 @@
 ﻿using AppGham.Extensions;
-using AppGham.Helpers;
-using AppGham.Services;
-using AppGham.Shared;
+using AppGham.Services.Interfaces;
 using System;
 using System.Threading.Tasks;
 
-namespace AppGham.ViewModels
+namespace AppGham.PageModels
 {
-    public class UserEditor : UserEditorBase
+    public class UserEditorPageModel : UserEditorBase
     {
-        public UserEditor(IUser user) : base(new UserService(), new DialogService())
+        public UserEditorPageModel(IUserService userService) : base(userService)
         {
-            User = user;
-        }
 
-        public override IUser User { get; set; }
+        }
 
         bool UpdateIsEnabled => !string.IsNullOrWhiteSpace(User.Name) ||
                                 !string.IsNullOrWhiteSpace(User.Email);
@@ -27,7 +23,7 @@ namespace AppGham.ViewModels
                     return;
 
                 await _userService.UpdateUserAsync(User);
-                await NavigationService.Navigation.PushAsync(new Views.UserPage(User));
+                await CoreMethods.PushPageModelWithNewNavigation<UserPageModel>(User);
             }
             catch (Exception ex)
             {

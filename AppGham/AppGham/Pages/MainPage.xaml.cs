@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace AppGham.Views
+namespace AppGham.Pages
 {
     public partial class MainPage : ContentPage
     {
