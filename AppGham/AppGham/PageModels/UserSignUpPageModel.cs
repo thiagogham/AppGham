@@ -29,7 +29,6 @@ namespace AppGham.PageModels
 
                 User.Password = Utils.MD5Hash(User.Password);
                 await _userService.AddUserAsync(User);
-                await CoreMethods.DisplayAlert("User Sign Up", "User saved successfully!", "Ok");
                 await CoreMethods.PushPageModelWithNewNavigation<UserPageModel>(User);
             }
             catch (Exception ex)

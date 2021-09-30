@@ -1,0 +1,15 @@
+﻿<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      x:Class="AppGham.Controls.FrameEntry"
+      Margin="0"
+      x:Name="this">
+    <StackLayout>
+        <Frame Style="{DynamicResource FrameEntryStyle}">
+            <Entry BindingContext="{x:Reference this}"
+                   Text="{Binding Text}"
+                   Placeholder="{Binding Placeholder}"
+                   IsPassword="{Binding IsPassword}"
+                   Style="{DynamicResource EntryStyle}"/>
+        </Frame>
+    </StackLayout>
+</Grid>

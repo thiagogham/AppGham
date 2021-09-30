@@ -1,15 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppGham.Pages.LoginPage">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:controls="clr-namespace:AppGham.Controls"
+             x:Class="AppGham.Pages.LoginPage"
+             NavigationPage.HasNavigationBar="False"
+             Style="{DynamicResource ContentPageStyle}">
     <ContentPage.Content>
-        <StackLayout Margin="20,20,20,0">
-            <Entry Text="{Binding User.Email}" Placeholder="Email"/>
-            <Entry Text="{Binding User.Password}" Placeholder="Password" IsPassword="True"/>
-            <Button Command="{Binding SaveCommand}" Text="Login" />
-            <StackLayout VerticalOptions="EndAndExpand">
-                <Button Command="{Binding SignUpCommand}" Text="Sign Up" />
-            </StackLayout>
+        <StackLayout Margin="0,150,0,0">
+            <Label Text="AppGham" 
+                   FontSize="Large" 
+                   HorizontalTextAlignment="Center" 
+                   FontAttributes="Bold"
+                   TextColor="{StaticResource ColorText}"/>
+            <controls:FrameEntry Text="{Binding User.Email}" Placeholder="Email" />
+            <controls:FrameEntry Text="{Binding User.Password}" Placeholder="Password" IsPassword="True" />
+            <Button Command="{Binding SaveCommand}" Text="Login" Style="{DynamicResource ButtonPrimaryStyle}"/>
+            <Button Command="{Binding SignUpCommand}" Text="Sign Up" VerticalOptions="EndAndExpand" Style="{DynamicResource ButtonPrimaryStyle}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

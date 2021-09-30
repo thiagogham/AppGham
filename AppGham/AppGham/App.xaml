@@ -3,6 +3,41 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppGham.App">
     <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="PrimaryColor">#344955</Color>
+            <Color x:Key="SecondaryColor">#F9AA33</Color>
+            <Color x:Key="DarkColor">#232F34</Color>
+            <Color x:Key="LightColor">#4A6572</Color>
+            <Color x:Key="EntryColor">#E0E0E0</Color>
+            <Color x:Key="ColorText">#E0E0E0</Color>
+            
+            <Style x:Key="ContentPageStyle" TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}"/>
+            </Style>
 
+            <Style x:Key="FrameEntryStyle" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="{StaticResource EntryColor}"/>
+                <Setter Property="Margin" Value="20,2,20,2"/>
+                <Setter Property="Padding" Value="10,0,10,0"/>
+                <Setter Property="CornerRadius" Value="4"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="MinimumWidthRequest" Value="100"/>
+            </Style>
+            
+            <Style x:Key="EntryStyle" TargetType="Entry">
+                <Setter Property="BackgroundColor" Value="{StaticResource EntryColor}"/>
+                <Setter Property="TextColor" Value="{StaticResource DarkColor}"/>
+                <Setter Property="Margin" Value="0"/>
+            </Style>
+
+            <Style x:Key="ButtonPrimaryStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource SecondaryColor}"/>
+                <Setter Property="TextColor" Value="{StaticResource DarkColor}"/>
+                <Setter Property="FontSize" Value="Body"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="Margin" Value="20"/>
+                <Setter Property="MinimumWidthRequest" Value="100"/>
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
