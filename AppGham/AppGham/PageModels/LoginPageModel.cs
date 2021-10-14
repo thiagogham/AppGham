@@ -1,6 +1,7 @@
 ﻿using AppGham.Extensions;
 using AppGham.Services.Interfaces;
 using AppGham.Shared.Models;
+using AppGham.Validations;
 using MvvmHelpers.Commands;
 using System;
 using System.Threading.Tasks;
@@ -9,15 +10,12 @@ namespace AppGham.PageModels
 {
     public class LoginPageModel : UserEditorBase
     {
-        public LoginPageModel(IUserService userService) : base(userService)
+        public LoginPageModel(IUserService userService) : base(userService, new UserValidator(UserPageValidator.LoginPage))
         {
             SignUpCommand = new AsyncCommand(async () => await CoreMethods.PushPageModel<UserSignUpPageModel>());
         }
 
         public AsyncCommand SignUpCommand { get; }
-
-        bool LoginIsEnabled => !string.IsNullOrWhiteSpace(User.Email) ||
-                               !string.IsNullOrWhiteSpace(User.Password);
 
         public override void Init(object initData)
         {
@@ -28,18 +26,22 @@ namespace AppGham.PageModels
         {
             try
             {
-                if (!LoginIsEnabled)
-                    return;
+                var user = await _userService.GetUserAsync(User.Email);
 
-                var logged = await _userService.LoginUserAsync(User.Email, User.Password);
-                if(logged)
+                if (user == null)
+                {
+                    await CoreMethods.DisplayAlert("User Login", "Email not registered!", "Ok");
+                    return;
+                }
+
+                if (await _userService.LoginUserAsync(User.Email, User.Password))
                 {
                     User = await _userService.GetUserAsync(User.Email);
                     await CoreMethods.PushPageModelWithNewNavigation<UserPageModel>(User);
                     return;
                 }
-                
-                await CoreMethods.DisplayAlert("User Login", "Wrong email or password!", "Ok");
+
+                await CoreMethods.DisplayAlert("User Login", "Wrong password!", "Ok");
             }
             catch (Exception ex)
             {

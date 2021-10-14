@@ -15,7 +15,7 @@
                 <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}"/>
             </Style>
 
-            <Style x:Key="FrameEntryStyle" TargetType="Frame">
+            <Style x:Key="CustomEntryStyle" TargetType="Frame">
                 <Setter Property="BackgroundColor" Value="{StaticResource EntryColor}"/>
                 <Setter Property="Margin" Value="20,2,20,2"/>
                 <Setter Property="Padding" Value="10,0,10,0"/>
@@ -38,6 +38,7 @@
                 <Setter Property="Margin" Value="20"/>
                 <Setter Property="MinimumWidthRequest" Value="100"/>
             </Style>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

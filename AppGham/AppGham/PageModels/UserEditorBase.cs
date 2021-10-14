@@ -2,10 +2,12 @@
 using AppGham.Services.Interfaces;
 using AppGham.Shared;
 using AppGham.Shared.Models;
+using AppGham.Validations;
 using FreshMvvm;
 using MvvmHelpers.Commands;
 using System;
 using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 
@@ -14,13 +16,14 @@ namespace AppGham.PageModels
     public abstract class UserEditorBase : FreshBasePageModel
     {
         protected readonly IUserService _userService;
+        protected readonly UserValidator _userValidator;
 
-        protected UserEditorBase(IUserService userService)
+        protected UserEditorBase(IUserService userService, UserValidator userValidator)
         {
             _userService = userService;
+            _userValidator = userValidator;
             TakePhotoCommand = new AsyncCommand(TakePhotoAsync);
-            SaveCommand = new AsyncCommand(SaveAsync);
-            PhotoPath = "icon.png";
+            SaveCommand = new AsyncCommand(SaveUserAsync);
             User = new User();
         }
 
@@ -38,6 +41,31 @@ namespace AppGham.PageModels
         public AsyncCommand SaveCommand { get; }
 
         public abstract Task SaveAsync();
+
+        private async Task SaveUserAsync()
+        {
+            if (Validate())
+            {
+                await SaveAsync();
+            }
+        }
+
+        private bool Validate()
+        {
+            var result = _userValidator.Validate(User);
+            if (!result.IsValid)
+            {
+                StringBuilder erros = new StringBuilder();
+                foreach (var failure in result.Errors)
+                {
+                    _ = erros.Append($"{failure.ErrorMessage}{Environment.NewLine}");
+                }
+
+                _ = CoreMethods.DisplayAlert("Error", erros.ToString(), "Ok");
+            }
+
+            return result.IsValid;
+        }
 
         async Task LoadPhotoAsync(FileResult photo)
         {

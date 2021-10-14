@@ -8,6 +8,7 @@ namespace AppGham.Shared.Models
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
 
+        [MaxLength(150)]
         public string Name { get; set; }
 
         [Unique]
@@ -15,6 +16,7 @@ namespace AppGham.Shared.Models
 
         public string Photo { get; set; }
         
+        [NotNull]
         public string Password { get; set; }
 
         public DateTime Date { get; set; }

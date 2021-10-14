@@ -32,7 +32,7 @@ namespace AppGham.Services
         public async Task<IUser> GetUserAsync(string email)
         {
             await Init();
-            return await _service.GetAsync<User>(user => user.Email == email);
+            return await _service.FindWithQueryAsync<User>($"SELECT * FROM User WHERE email = ?", email);
         }
 
         public async Task<IList<IUser>> GetUsersAsync()
@@ -44,7 +44,7 @@ namespace AppGham.Services
         public async Task<bool> LoginUserAsync(string email, string password)
         {
             await Init();
-            var user = await _service.Table<User>().Where(userDb => userDb.Email == email).FirstOrDefaultAsync();
+            var user = await GetUserAsync(email);
             return user != null && user.Password.Equals(Utils.MD5Hash(password), StringComparison.Ordinal);
         }
 
