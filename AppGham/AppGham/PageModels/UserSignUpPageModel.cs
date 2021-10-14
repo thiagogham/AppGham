@@ -18,6 +18,13 @@ namespace AppGham.PageModels
         {
             try
             {
+                var user = await _userService.GetUserAsync(User.Email);
+                if(user != null)
+                {
+                    await CoreMethods.DisplayAlert("User SignUp", "Email already registered!", "Ok");
+                    return;
+                }
+
                 User.Password = Utils.MD5Hash(User.Password);
                 await _userService.AddUserAsync(User);
                 await CoreMethods.PushPageModelWithNewNavigation<UserPageModel>(User);

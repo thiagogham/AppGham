@@ -10,9 +10,22 @@
             <Color x:Key="LightColor">#4A6572</Color>
             <Color x:Key="EntryColor">#E0E0E0</Color>
             <Color x:Key="ColorText">#E0E0E0</Color>
+
+            <Style TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="{StaticResource PrimaryColor}" />
+                <Setter Property="Shell.ForegroundColor" Value="{StaticResource ColorText}"/>
+            </Style>
+            
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource PrimaryColor}" />
+                <Setter Property="BarTextColor" Value="{StaticResource ColorText}"/>
+            </Style>
             
             <Style x:Key="ContentPageStyle" TargetType="ContentPage">
                 <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}"/>
+                <Setter Property="NavigationPage.BackgroundColor" Value="{StaticResource PrimaryColor}" />
+                <Setter Property="NavigationPage.BarBackgroundColor" Value="{StaticResource PrimaryColor}" />
+                <Setter Property="NavigationPage.BarTextColor" Value="{StaticResource ColorText}"/>
             </Style>
 
             <Style x:Key="CustomEntryStyle" TargetType="Frame">
@@ -30,6 +43,11 @@
                 <Setter Property="Margin" Value="0"/>
             </Style>
 
+            <Style x:Key="LabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource ColorText}"/>
+                <Setter Property="FontSize" Value="Body"/>
+            </Style>
+            
             <Style x:Key="ButtonPrimaryStyle" TargetType="Button">
                 <Setter Property="BackgroundColor" Value="{StaticResource SecondaryColor}"/>
                 <Setter Property="TextColor" Value="{StaticResource DarkColor}"/>

@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppGham.Pages.UserPage">
+             x:Class="AppGham.Pages.UserPage"
+             NavigationPage.HasNavigationBar="False"
+             Style="{DynamicResource ContentPageStyle}">
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Padding="40">
@@ -18,17 +20,17 @@
             </StackLayout>
             <StackLayout Margin="20" Orientation="Horizontal">
                 <StackLayout>
-                    <Label Text="Name: "/>
-                    <Label Text="Email: "/>
+                    <Label Text="Name: " Style="{DynamicResource LabelStyle}"/>
+                    <Label Text="Email: " Style="{DynamicResource LabelStyle}"/>
                 </StackLayout>
                 <StackLayout>
-                    <Label Text="{Binding User.Name}"/>
-                    <Label Text="{Binding User.Email}"/>
+                    <Label Text="{Binding User.Name}" Style="{DynamicResource LabelStyle}"/>
+                    <Label Text="{Binding User.Email}" Style="{DynamicResource LabelStyle}"/>
                 </StackLayout>
             </StackLayout>
             <StackLayout HorizontalOptions="CenterAndExpand">
-                <Button Command="{Binding EditCommand}" Text="Edit" />
-                <Button Command="{Binding LogoutCommand}" Text="Logout" />
+                <Button Command="{Binding EditCommand}" Text="Edit" Style="{DynamicResource ButtonPrimaryStyle}"/>
+                <Button Command="{Binding LogoutCommand}" Text="Logout" Style="{DynamicResource ButtonPrimaryStyle}"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

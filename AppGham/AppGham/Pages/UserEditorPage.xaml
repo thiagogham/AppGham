@@ -1,14 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppGham.Pages.UserEditorPage">
+             xmlns:controls="clr-namespace:AppGham.Controls"
+             x:Class="AppGham.Pages.UserEditorPage"
+             Style="{DynamicResource ContentPageStyle}"
+             Title="User Editor">
     <ContentPage.Content>
-        <StackLayout Margin="20,20,20,0">
-            <Entry Text="{Binding User.Name}" Placeholder="Name"/>
-            <Entry Text="{Binding User.Email}" Placeholder="Email"/>
+        <StackLayout>
+            <controls:CustomEntry EntryText="{Binding User.Name}" Placeholder="Name"/>
+            <controls:CustomEntry EntryText="{Binding User.Email}" Placeholder="Email"/>
             <Image Source="{Binding User.Photo}" WidthRequest="200"/>
-            <Button Command="{Binding TakePhotoCommand}" Text="TakePhoto"/>
-            <Button Command="{Binding SaveCommand}" Text="Save" />
+            <Button Command="{Binding TakePhotoCommand}" Text="TakePhoto" Style="{DynamicResource ButtonPrimaryStyle}"/>
+            <Button Command="{Binding SaveCommand}" Text="Save" Style="{DynamicResource ButtonPrimaryStyle}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
