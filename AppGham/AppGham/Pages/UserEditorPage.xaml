@@ -6,12 +6,14 @@
              Style="{DynamicResource ContentPageStyle}"
              Title="User Editor">
     <ContentPage.Content>
-        <StackLayout>
-            <controls:CustomEntry EntryText="{Binding User.Name}" Placeholder="Name"/>
-            <controls:CustomEntry EntryText="{Binding User.Email}" Placeholder="Email"/>
-            <Image Source="{Binding User.Photo}" WidthRequest="200"/>
-            <Button Command="{Binding TakePhotoCommand}" Text="TakePhoto" Style="{DynamicResource ButtonPrimaryStyle}"/>
-            <Button Command="{Binding SaveCommand}" Text="Save" Style="{DynamicResource ButtonPrimaryStyle}"/>
+        <StackLayout Margin="0,100,0,0">
+            <controls:UserPhotoControl Source="{Binding User.Photo}" />
+            <controls:EntryControl EntryText="{Binding User.Name}" Placeholder="Name"/>
+            <controls:EntryControl EntryText="{Binding User.Email}" Placeholder="Email"/>
+            <StackLayout VerticalOptions="EndAndExpand">
+                <Button Command="{Binding TakePhotoCommand}" Text="TakePhoto" Style="{DynamicResource ButtonPrimaryStyle}" />
+                <Button Command="{Binding SaveCommand}" Text="Save" Style="{DynamicResource ButtonPrimaryStyle}" />
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

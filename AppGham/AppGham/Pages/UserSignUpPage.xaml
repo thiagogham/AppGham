@@ -12,9 +12,9 @@
                    HorizontalTextAlignment="Center" 
                    FontAttributes="Bold"
                    TextColor="{StaticResource ColorText}"/>
-            <controls:CustomEntry EntryText="{Binding User.Name}" Placeholder="Name" />
-            <controls:CustomEntry EntryText="{Binding User.Email}" Placeholder="Email" />
-            <controls:CustomEntry EntryText="{Binding User.Password}" Placeholder="Password" IsPassword="True" />
+            <controls:EntryControl EntryText="{Binding User.Name}" Placeholder="Name" />
+            <controls:EntryControl EntryText="{Binding User.Email}" Placeholder="Email" />
+            <controls:EntryControl EntryText="{Binding User.Password}" Placeholder="Password" IsPassword="True" />
             <Button Command="{Binding SaveCommand}" Text="Register" Style="{DynamicResource ButtonPrimaryStyle}"/>
         </StackLayout>
     </ContentPage.Content>

@@ -2,18 +2,18 @@
 
 namespace AppGham.Controls
 {
-    public class CustomEntry : StackLayout
+    public class EntryControl : StackLayout
     {
-        public CustomEntry()
+        public EntryControl()
         {
-            var _entry = new Entry();
-            _entry.SetBinding(Entry.TextProperty, new Binding(nameof(EntryText), source: this));
-            _entry.SetBinding(Entry.PlaceholderProperty, new Binding(nameof(Placeholder), source: this));
-            _entry.SetBinding(Entry.IsPasswordProperty, new Binding(nameof(IsPassword), source: this));
+            Entry entry = new Entry();
+            entry.SetBinding(Entry.TextProperty, new Binding(nameof(EntryText), source: this));
+            entry.SetBinding(Entry.PlaceholderProperty, new Binding(nameof(Placeholder), source: this));
+            entry.SetBinding(Entry.IsPasswordProperty, new Binding(nameof(IsPassword), source: this));
             var frame = new Frame
             {
-                Style = (Style)Application.Current.Resources["CustomEntryStyle"],
-                Content = _entry
+                Style = (Style)Application.Current.Resources["EntryControlStyle"],
+                Content = entry
             };
             Children.Add(frame);
         }
@@ -27,7 +27,7 @@ namespace AppGham.Controls
         public static readonly BindableProperty EntryTextProperty = BindableProperty.Create(
            nameof(EntryText),
            typeof(string),
-           typeof(CustomEntry),
+           typeof(EntryControl),
            string.Empty,
            BindingMode.TwoWay);
 
@@ -40,7 +40,7 @@ namespace AppGham.Controls
         public static readonly BindableProperty PlaceholderProperty = BindableProperty.Create(
            "Placeholder",
            typeof(string),
-           typeof(CustomEntry),
+           typeof(EntryControl),
            string.Empty,
            BindingMode.TwoWay);
 
@@ -53,7 +53,7 @@ namespace AppGham.Controls
         public static readonly BindableProperty IsPasswordProperty = BindableProperty.Create(
            "IsPassword",
            typeof(bool),
-           typeof(CustomEntry),
+           typeof(EntryControl),
            false,
            BindingMode.TwoWay);
     }

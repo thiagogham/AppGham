@@ -12,8 +12,8 @@
                    HorizontalTextAlignment="Center" 
                    FontAttributes="Bold"
                    TextColor="{StaticResource ColorText}"/>
-            <controls:CustomEntry EntryText="{Binding User.Email}" Placeholder="Email" />
-            <controls:CustomEntry EntryText="{Binding User.Password}" Placeholder="Password" IsPassword="True" />
+            <controls:EntryControl EntryText="{Binding User.Email}" Placeholder="Email" />
+            <controls:EntryControl EntryText="{Binding User.Password}" Placeholder="Password" IsPassword="True" />
             <Button Command="{Binding SaveCommand}" Text="Login" Style="{DynamicResource ButtonPrimaryStyle}"/>
             <Button Command="{Binding SignUpCommand}" Text="Sign Up" VerticalOptions="EndAndExpand" Style="{DynamicResource ButtonPrimaryStyle}" />
         </StackLayout>

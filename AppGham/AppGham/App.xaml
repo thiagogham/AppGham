@@ -28,13 +28,23 @@
                 <Setter Property="NavigationPage.BarTextColor" Value="{StaticResource ColorText}"/>
             </Style>
 
-            <Style x:Key="CustomEntryStyle" TargetType="Frame">
+            <Style x:Key="EntryControlStyle" TargetType="Frame">
                 <Setter Property="BackgroundColor" Value="{StaticResource EntryColor}"/>
                 <Setter Property="Margin" Value="20,2,20,2"/>
                 <Setter Property="Padding" Value="10,0,10,0"/>
                 <Setter Property="CornerRadius" Value="4"/>
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
                 <Setter Property="MinimumWidthRequest" Value="100"/>
+            </Style>
+
+            <Style x:Key="UserPhotoControlStyle" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="100"/>
+                <Setter Property="HeightRequest" Value="200"/>
+                <Setter Property="WidthRequest" Value="200"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="IsClippedToBounds" Value="True"/>
             </Style>
             
             <Style x:Key="EntryStyle" TargetType="Entry">
@@ -53,7 +63,7 @@
                 <Setter Property="TextColor" Value="{StaticResource DarkColor}"/>
                 <Setter Property="FontSize" Value="Body"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="Margin" Value="20"/>
+                <Setter Property="Margin" Value="10"/>
                 <Setter Property="MinimumWidthRequest" Value="100"/>
             </Style>
             

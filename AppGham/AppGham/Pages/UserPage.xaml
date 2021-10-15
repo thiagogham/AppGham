@@ -2,22 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppGham.Pages.UserPage"
+             xmlns:controls="clr-namespace:AppGham.Controls"
              NavigationPage.HasNavigationBar="False"
              Style="{DynamicResource ContentPageStyle}">
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout Padding="40">
-                <Frame CornerRadius="100" 
-                       HeightRequest="200"
-                       WidthRequest="200"
-                       Padding="0"
-                       HorizontalOptions="Center"
-                       IsClippedToBounds="True">
-                    <Image Source="{Binding User.Photo}"
-                           HorizontalOptions="Center"
-                           VerticalOptions="Center" />
-                </Frame>
-            </StackLayout>
+        <StackLayout Margin="0,150,0,0">
+            <controls:UserPhotoControl Source="{Binding User.Photo}" />
             <StackLayout Margin="20" Orientation="Horizontal">
                 <StackLayout>
                     <Label Text="Name: " Style="{DynamicResource LabelStyle}"/>
@@ -28,9 +18,9 @@
                     <Label Text="{Binding User.Email}" Style="{DynamicResource LabelStyle}"/>
                 </StackLayout>
             </StackLayout>
-            <StackLayout HorizontalOptions="CenterAndExpand">
-                <Button Command="{Binding EditCommand}" Text="Edit" Style="{DynamicResource ButtonPrimaryStyle}"/>
-                <Button Command="{Binding LogoutCommand}" Text="Logout" Style="{DynamicResource ButtonPrimaryStyle}"/>
+            <StackLayout VerticalOptions="EndAndExpand">
+                <Button Command="{Binding EditCommand}" Text="Edit" Style="{DynamicResource ButtonPrimaryStyle}" />
+                <Button Command="{Binding LogoutCommand}" Text="Logout" Style="{DynamicResource ButtonPrimaryStyle}" />
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
