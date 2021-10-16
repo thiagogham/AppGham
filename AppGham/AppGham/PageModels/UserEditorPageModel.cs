@@ -25,5 +25,15 @@ namespace AppGham.PageModels
                 ex.ErrorAlert();
             }
         }
+
+        protected override void ViewIsAppearing(object sender, EventArgs e)
+        {
+            base.ViewIsAppearing(sender, e);
+
+            if (!UserSettings.CheckIsLogged(User).GetAwaiter().GetResult())
+            {
+                _ = CoreMethods.PushPageModelWithNewNavigation<LoginPageModel>(null, true);
+            }
+        }
     }
 }

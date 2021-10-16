@@ -9,7 +9,7 @@ namespace AppGham.PageModels
         public UserPageModel()
         {
             EditCommand = new AsyncCommand(async () => await CoreMethods.PushPageModel<UserEditorPageModel>(User));
-            LogoutCommand = new AsyncCommand(async () => await CoreMethods.PushPageModelWithNewNavigation<LoginPageModel>(null));
+            LogoutCommand = new AsyncCommand(async () => await CoreMethods.PushPageModelWithNewNavigation<LoginPageModel>(null, true));
         }
 
         public AsyncCommand EditCommand { get; private set; }

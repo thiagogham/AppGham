@@ -20,6 +20,8 @@ namespace AppGham.PageModels
         public override void Init(object initData)
         {
             User = new User();
+            CoreMethods.RemoveFromNavigation();
+            UserSettings.Clean();
         }
 
         public override async Task SaveAsync()
@@ -37,6 +39,7 @@ namespace AppGham.PageModels
                 if (await _userService.LoginUserAsync(User.Email, User.Password))
                 {
                     User = await _userService.GetUserAsync(User.Email);
+                    await UserSettings.SetIsLogged(User);
                     await CoreMethods.PushPageModelWithNewNavigation<UserPageModel>(User);
                     return;
                 }
