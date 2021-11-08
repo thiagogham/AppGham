@@ -86,7 +86,19 @@ namespace AppGham.PageModels
         {
             try
             {
-                await LoadPhotoAsync(await MediaPicker.CapturePhotoAsync());
+                var option = await CoreMethods.DisplayActionSheet("Get Photo", "Cancel", "Capture Photo", "Pick Photo");
+                FileResult file = null;
+                switch (option)
+                {
+                    case "Capture Photo":
+                        file = await MediaPicker.CapturePhotoAsync();
+                        break;
+                    case "Pick Photo":
+                        file = await MediaPicker.PickPhotoAsync();
+                        break;
+                }
+
+                await LoadPhotoAsync(file);
             }
             catch (FeatureNotSupportedException fnsEx)
             {

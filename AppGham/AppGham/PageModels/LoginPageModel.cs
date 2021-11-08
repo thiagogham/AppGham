@@ -1,5 +1,6 @@
 ﻿using AppGham.Extensions;
 using AppGham.Services.Interfaces;
+using AppGham.Shared;
 using AppGham.Shared.Models;
 using AppGham.Validations;
 using MvvmHelpers.Commands;
@@ -13,15 +14,32 @@ namespace AppGham.PageModels
         public LoginPageModel(IUserService userService) : base(userService, new UserValidator(UserPageValidator.LoginPage))
         {
             SignUpCommand = new AsyncCommand(async () => await CoreMethods.PushPageModel<UserSignUpPageModel>());
+            KeepLogged = UserSettings.GetKeepLogged();
         }
 
         public AsyncCommand SignUpCommand { get; }
 
+        private bool _keepLogged;
+        public bool KeepLogged
+        {
+            get => _keepLogged;
+            set
+            {
+                _keepLogged = value;
+                UserSettings.SetKeepLogged(value);
+            }
+        }
+        
         public override void Init(object initData)
         {
             User = new User();
+            UserSettings.SetIsLogged(false);
             CoreMethods.RemoveFromNavigation();
-            UserSettings.Clean();
+
+            if (initData == null && KeepLogged)
+                _ = LoginUserByUser();
+            else
+                _ = UserSettings.RemoveUserLogged();
         }
 
         public override async Task SaveAsync()
@@ -38,9 +56,8 @@ namespace AppGham.PageModels
 
                 if (await _userService.LoginUserAsync(User.Email, User.Password))
                 {
-                    User = await _userService.GetUserAsync(User.Email);
-                    await UserSettings.SetIsLogged(User);
-                    await CoreMethods.PushPageModelWithNewNavigation<UserPageModel>(User);
+                    User = user;
+                    await LoginSuccess();
                     return;
                 }
 
@@ -50,6 +67,29 @@ namespace AppGham.PageModels
             {
                 ex.ErrorAlert();
             }
+        }
+
+        private async Task LoginUserByUser()
+        {
+            try
+            {
+                User = await UserSettings.GetUserLogged();
+                if (await _userService.LoginUserAsync(User))
+                    await LoginSuccess();
+            }
+            catch (Exception ex)
+            {
+                ex.ErrorAlert();
+            }
+        }
+
+        private async Task LoginSuccess()
+        {
+            UserSettings.SetIsLogged(true);
+            if (KeepLogged)
+                await UserSettings.SetUserLogged(User);
+
+            await CoreMethods.PushPageModelWithNewNavigation<UserPageModel>(User);
         }
     }
 }

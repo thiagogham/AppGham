@@ -6,7 +6,7 @@
              Style="{DynamicResource ContentPageStyle}"
              Title="User Editor">
     <ContentPage.Content>
-        <StackLayout Margin="0,100,0,0">
+        <StackLayout Margin="20,150,20,100">
             <controls:UserPhotoControl Source="{Binding User.Photo}" />
             <controls:EntryControl EntryText="{Binding User.Name}" Placeholder="Name"/>
             <controls:EntryControl EntryText="{Binding User.Email}" Placeholder="Email"/>

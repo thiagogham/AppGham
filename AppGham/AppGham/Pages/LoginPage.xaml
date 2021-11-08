@@ -6,16 +6,28 @@
              NavigationPage.HasNavigationBar="False"
              Style="{DynamicResource ContentPageStyle}">
     <ContentPage.Content>
-        <StackLayout Margin="0,150,0,0">
+        <StackLayout Margin="20,150,20,100">
             <Label Text="AppGham" 
                    FontSize="Large" 
                    HorizontalTextAlignment="Center" 
                    FontAttributes="Bold"
                    TextColor="{StaticResource ColorText}"/>
-            <controls:EntryControl EntryText="{Binding User.Email}" Placeholder="Email" />
-            <controls:EntryControl EntryText="{Binding User.Password}" Placeholder="Password" IsPassword="True" />
-            <Button Command="{Binding SaveCommand}" Text="Login" Style="{DynamicResource ButtonPrimaryStyle}"/>
-            <Button Command="{Binding SignUpCommand}" Text="Sign Up" VerticalOptions="EndAndExpand" Style="{DynamicResource ButtonPrimaryStyle}" />
+            <controls:EntryControl EntryText="{Binding User.Email}"
+                                   Placeholder="Email"/>
+            <controls:EntryControl EntryText="{Binding User.Password}" 
+                                   Placeholder="Password" 
+                                   IsPassword="True"/>
+            <Button Command="{Binding SaveCommand}" 
+                    Text="Login" 
+                    Style="{DynamicResource ButtonPrimaryStyle}"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Keep logged" Style="{DynamicResource LabelStyle}"/>
+                <Switch HorizontalOptions="StartAndExpand" IsToggled="{Binding KeepLogged}" />
+            </StackLayout>
+            <Button Command="{Binding SignUpCommand}" 
+                    Text="Sign Up" 
+                    VerticalOptions="EndAndExpand" 
+                    Style="{DynamicResource ButtonPrimaryStyle}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

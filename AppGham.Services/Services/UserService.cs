@@ -14,6 +14,7 @@ namespace AppGham.Services
         {
             await Init();
             user.Date = DateTime.Now;
+            user.Password = Utils.MD5Hash(user.Password);
             return await _service.InsertAsync(user);
         }
 
@@ -46,6 +47,16 @@ namespace AppGham.Services
             await Init();
             var user = await GetUserAsync(email);
             return user != null && user.Password.Equals(Utils.MD5Hash(password), StringComparison.Ordinal);
+        }
+
+        public async Task<bool> LoginUserAsync(IUser user)
+        {
+            if (user == null)
+                return false;
+
+            await Init();
+            var userDB = await GetUserAsync(user.Email);
+            return userDB != null && userDB.Password.Equals(user.Password, StringComparison.Ordinal);
         }
 
         public async Task<int> UpdateUserAsync(IUser user)

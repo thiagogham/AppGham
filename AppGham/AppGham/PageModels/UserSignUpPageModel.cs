@@ -1,6 +1,5 @@
 ﻿using AppGham.Extensions;
 using AppGham.Services.Interfaces;
-using AppGham.Shared.Helpers;
 using AppGham.Validations;
 using System;
 using System.Threading.Tasks;
@@ -25,7 +24,6 @@ namespace AppGham.PageModels
                     return;
                 }
 
-                User.Password = Utils.MD5Hash(User.Password);
                 await _userService.AddUserAsync(User);
                 await CoreMethods.PushPageModelWithNewNavigation<UserPageModel>(User);
             }

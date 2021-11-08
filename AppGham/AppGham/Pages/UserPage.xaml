@@ -6,7 +6,7 @@
              NavigationPage.HasNavigationBar="False"
              Style="{DynamicResource ContentPageStyle}">
     <ContentPage.Content>
-        <StackLayout Margin="0,150,0,0">
+        <StackLayout Margin="20,150,20,100">
             <controls:UserPhotoControl Source="{Binding User.Photo}" />
             <StackLayout Margin="20" Orientation="Horizontal">
                 <StackLayout>

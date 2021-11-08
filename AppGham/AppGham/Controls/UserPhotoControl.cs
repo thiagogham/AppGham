@@ -9,7 +9,8 @@ namespace AppGham.Controls
             Image image = new Image
             {
                 HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.Center
+                VerticalOptions = LayoutOptions.Center,
+                Aspect = Aspect.Fill
             };
             image.SetBinding(Image.SourceProperty, new Binding(nameof(Source), source: this));
             Frame frame = new Frame

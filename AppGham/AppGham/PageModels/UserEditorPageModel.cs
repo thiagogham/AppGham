@@ -30,7 +30,7 @@ namespace AppGham.PageModels
         {
             base.ViewIsAppearing(sender, e);
 
-            if (!UserSettings.CheckIsLogged(User).GetAwaiter().GetResult())
+            if (!UserSettings.CheckIsLogged())
             {
                 _ = CoreMethods.PushPageModelWithNewNavigation<LoginPageModel>(null, true);
             }
